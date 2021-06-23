@@ -10,8 +10,14 @@ route.get("/", async (req: Request, res: Response) => {
 });
 
 // Ruta post: Agregar tarea
-route.post("/:id", (req: Request, res: Response) => {
-  //TODO
+route.post("/", async (req: Request, res: Response) => {
+  const { text, done } = req.body;
+  const task = await TaskModel.create({
+    text,
+    done,
+    created: new Date(),
+  });
+  res.json(task);
 });
 
 // Ruta put: Actualizar tarea

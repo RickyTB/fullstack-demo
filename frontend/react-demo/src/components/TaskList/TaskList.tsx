@@ -9,7 +9,7 @@ export const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
   const [pending, done] = useMemo(() => {
     return tasks.reduce(
       (arr, task) => {
-        if (task.done) arr[0].push(task);
+        if (!task.done) arr[0].push(task);
         else arr[1].push(task);
         return arr;
       },

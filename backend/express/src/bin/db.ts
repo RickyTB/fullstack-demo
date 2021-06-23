@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export default async function initMongo() {
+export async function initMongo() {
   return mongoose
     .connect(process.env.DATABASE_URL as string, {
       useNewUrlParser: true,

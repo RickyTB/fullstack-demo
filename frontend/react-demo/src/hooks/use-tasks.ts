@@ -14,8 +14,19 @@ export const useTasks = () => {
     setLoading(false);
   }, []);
 
-  const addNewTask = useCallback((task: Omit<ITask, "id">) => {
-    //TODO: call api
+  const addNewTask = useCallback(async (text: string) => {
+    setLoading(true);
+    const task = await (
+      await fetch(`${API_URL}/tasks`, {
+        method: "POST",
+        body: JSON.stringify({ text, done: false }),
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+      })
+    ).json();
+    setTaskList((taskList) => [task, ...taskList]);
+    setLoading(false);
   }, []);
 
   return { taskList, loading, reloadTasks, addNewTask };

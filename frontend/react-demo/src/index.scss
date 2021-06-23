@@ -5,15 +5,11 @@
 $family-sans-serif: "Rubik", sans-serif;
 //$grey-dark: $brown;
 //$grey-light: $beige-light;
-//$primary: $purple;
+$primary: #61dafb;
 //$link: $pink;
 
 // Update some of Bulma's component variables
 $body-background-color: #011936;
 $hr-background-color: #ccc;
-$border: none;
-$display: block;
-$height: 1px;
-$margin: 1rem 0;
 
 @import "~bulma/bulma.sass";

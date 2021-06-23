@@ -10,7 +10,7 @@ export interface ITask {
 const schema = new Schema<ITask>({
   text: { type: String, required: true },
   done: { type: Boolean, required: true },
-  create: { type: Date, required: true },
+  created: { type: Date, required: true },
 });
 
 // 3. Create a Model.

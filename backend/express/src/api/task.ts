@@ -1,13 +1,13 @@
 import { Request, Response, Router } from "express";
+import { TaskModel } from "../models";
 
 const route = Router();
 
 // Ruta get: Listar tareas
-route.get("/", (req: Request, res: Response) =>
-  res.send(
-    "Ejemplo de CRUD API con Express y Mongoose. Por favor utiliza un frontend para interactuar."
-  )
-);
+route.get("/", async (req: Request, res: Response) => {
+  const tasks = await TaskModel.find().sort({ created: -1 });
+  res.json(tasks);
+});
 
 // Ruta post: Agregar tarea
 route.post("/:id", (req: Request, res: Response) => {

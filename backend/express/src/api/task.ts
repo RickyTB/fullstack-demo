@@ -10,17 +10,17 @@ route.get("/", (req: Request, res: Response) =>
 );
 
 // Ruta post: Agregar tarea
-route.post("/", (req: Request, res: Response) => {
+route.post("/:id", (req: Request, res: Response) => {
   //TODO
 });
 
 // Ruta put: Actualizar tarea
-route.put("/", (req: Request, res: Response) => {
+route.put("/:id", (req: Request, res: Response) => {
   //TODO
 });
 
 // Ruta delete: Eliminar tarea
-route.delete("/", (req: Request, res: Response) => {
+route.delete("/:id", (req: Request, res: Response) => {
   //TODO
 });
 

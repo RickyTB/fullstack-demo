@@ -12,7 +12,7 @@ initMongo();
 
 app.use(helmet()); // set well-known security-related HTTP headers
 app.use(compression());
-app.use(cors({ origin: "*" }));
+app.use(cors());
 app.use(json());
 
 app.disable("x-powered-by");

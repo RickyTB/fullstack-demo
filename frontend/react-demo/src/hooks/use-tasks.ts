@@ -29,5 +29,38 @@ export const useTasks = () => {
     setLoading(false);
   }, []);
 
-  return { taskList, loading, reloadTasks, addNewTask };
+  const updateTask = useCallback(
+    async (id: string, taskUpdate: { text: string; done: boolean }) => {
+      setLoading(true);
+      const task = await (
+        await fetch(`${API_URL}/tasks/${id}`, {
+          method: "PUT",
+          body: JSON.stringify(taskUpdate),
+          headers: {
+            "Content-Type": "application/json;charset=utf-8",
+          },
+        })
+      ).json();
+      setTaskList((taskList) =>
+        taskList.map((taskItem) => (taskItem.id === id ? task : taskItem))
+      );
+      setLoading(false);
+    },
+    []
+  );
+
+  const deleteTask = useCallback(async (id: string) => {
+    setLoading(true);
+    await (
+      await fetch(`${API_URL}/tasks/${id}`, {
+        method: "DELETE",
+      })
+    ).json();
+    setTaskList((taskList) =>
+      taskList.filter((taskItem) => taskItem.id !== id)
+    );
+    setLoading(false);
+  }, []);
+
+  return { taskList, loading, reloadTasks, addNewTask, updateTask, deleteTask };
 };

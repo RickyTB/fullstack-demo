@@ -1,4 +1,5 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { ImPlus } from "react-icons/im";
 import { useTasks } from "../../hooks";
 import { AddTask } from "../AddTask";
 import { TaskList } from "../TaskList";
@@ -6,8 +7,14 @@ import { TaskList } from "../TaskList";
 export interface TaskContainerProps {}
 
 export const TaskContainer: React.FC<TaskContainerProps> = () => {
-  const { taskList, loading, addNewTask } = useTasks();
+  const { taskList, reloadTasks, addNewTask, updateTask, deleteTask } =
+    useTasks();
   const [addMode, setAddMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    reloadTasks();
+    // eslint-disable-next-line
+  }, []);
 
   const handleAddButton = useCallback(() => {
     setAddMode(true);
@@ -41,17 +48,20 @@ export const TaskContainer: React.FC<TaskContainerProps> = () => {
             className="button is-primary is-light"
             onClick={handleAddButton}
           >
-            + Agregar Tarea
+            <ImPlus size="0.75rem" />
+            &nbsp;Agregar Tarea
           </button>
         )}
       </section>
       <hr />
       {addMode ? (
         <AddTask onAddTask={handleAddTask} />
-      ) : loading ? (
-        <p>Cargando...</p>
       ) : (
-        <TaskList tasks={taskList} />
+        <TaskList
+          tasks={taskList}
+          onTaskUpdated={updateTask}
+          onTaskDeleted={deleteTask}
+        />
       )}
       <hr />
       <p className="has-text-centered">2021, Universidad Central Del Ecuador</p>

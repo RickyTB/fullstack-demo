@@ -1,13 +1,13 @@
 <mat-list-item>
-	<mat-checkbox [checked]="task?.done || false"></mat-checkbox>
-	<h3 matLine> {{task?.text}} </h3>
+	<mat-checkbox [checked]="task.done || false" (change)="onCheckChange($event)"></mat-checkbox>
+	<h3 matLine> {{task.text}} </h3>
 	<p matLine>
-	  <span class="mat-caption">Apuntado el {{task?.created | date:'short'}} </span>
+	  <span class="mat-caption">Apuntado el {{task.created | date:'short':'-0500':'es'}} </span>
 	</p>
-    <button mat-icon-button aria-label="Example icon button with a home icon">
+    <button mat-icon-button (click)="onEditClick()">
       <mat-icon>edit</mat-icon>
     </button>
-    <button mat-icon-button color="warn" aria-label="Example icon button with a menu icon">
+    <button mat-icon-button color="warn" (click)="onDeleteClick()">
       <mat-icon>delete</mat-icon>
     </button>
 </mat-list-item>

@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Nueva tarea</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" >
+    <mat-label>Nueva tarea</mat-label>
+    <textarea matInput [(ngModel)]="data.taskContent"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button color="warn" (click)="onCancel()">Cancelar</button>
+  <button mat-flat-button color="accent" [mat-dialog-close]="data.taskContent" cdkFocusInitial [disabled]="!data.taskContent">Agregar</button>
+</div>

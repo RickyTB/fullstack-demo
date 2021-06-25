@@ -1,8 +1,10 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import { ITask } from 'src/models/task';
@@ -14,6 +16,8 @@ import { ITask } from 'src/models/task';
 })
 export class TaskListComponent implements OnInit, OnChanges {
   @Input('task-list') taskList: ITask[] = [];
+  @Output('edit-task') editTaskEmitter = new EventEmitter();
+  @Output('delete-task') deleteTaskEmitter = new EventEmitter();
   pendingTasks: ITask[] = [];
   doneTasks: ITask[] = [];
 
@@ -35,4 +39,12 @@ export class TaskListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {}
+
+  editTask(taskUpdate: { id: string; text: string; done: string }) {
+    this.editTaskEmitter.emit(taskUpdate);
+  }
+
+  deleteTask(id: string) {
+    this.deleteTaskEmitter.emit(id);
+  }
 }

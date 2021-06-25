@@ -1,12 +1,12 @@
 <h2 class="mat-h2">Pendientes</h2>
 <mat-list>
 	<div *ngFor="let task of pendingTasks">
-		<app-task-item [task]="task"></app-task-item>
+		<app-task-item [task]="task" (delete-task)="deleteTask($event)" (edit-task)="editTask($event)"></app-task-item>
 	</div>
 </mat-list>
 <h2 class="mat-h2">Finalizadas</h2>
 <mat-list>
 	<div *ngFor="let task of doneTasks">
-		<app-task-item [task]="task"></app-task-item>
+		<app-task-item [task]="task" (delete-task)="deleteTask($event)" (edit-task)="editTask($event)"></app-task-item>
 	</div>
 </mat-list>

@@ -1,0 +1,12 @@
+mat-list-item {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  &:hover {
+    border: 1px solid #ccc;
+  }
+}
+
+mat-checkbox {
+  order: -1;
+  margin-right: 1rem;
+}

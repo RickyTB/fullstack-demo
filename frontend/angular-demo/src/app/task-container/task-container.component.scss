@@ -1,0 +1,23 @@
+.task-container {
+  margin: 3rem 0;
+}
+
+mat-divider {
+  margin: 1rem 0;
+  position: relative !important;
+}
+
+.mat-display-1 {
+  margin-bottom: 0;
+  font-weight: bold;
+  button {
+    float: right;
+  }
+}
+
+mat-card-footer {
+  text-align: center;
+  > p:first-of-type {
+    margin-bottom: 0;
+  }
+}
